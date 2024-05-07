@@ -2,16 +2,12 @@ package com.example.log_in_reg
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Telephony.Mms.Intents
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.VectorConverter
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -36,7 +32,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
@@ -44,8 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.log_in_reg.ui.theme.Log_in_regTheme
-import com.example.log_in_reg.ui.theme.RegisterActivity
-import com.example.log_in_reg.ui.theme.ui.theme.IntentActivity
+import com.example.log_in_reg.RegisterActivity
 
 
 class MainActivity : ComponentActivity() {
@@ -124,10 +118,7 @@ fun Login() {
             keyboardActions = KeyboardActions()
 
         )
-        Spacer(
-            modifier = Modifier
-                .height(30.dp)
-        )
+
         Button(
             onClick = { /*TODO*/
 
@@ -140,13 +131,10 @@ fun Login() {
             )
 
         }
-        Spacer(
-            modifier = Modifier
-                .height(30.dp)
-        )
+
         Button(
             onClick = {
-                val intent = Intent(context, RegisterActivity::class.java)
+                val intent = Intent(context, com.example.log_in_reg.RegisterActivity::class.java)
                 context.startActivity(intent)
             },
             modifier = Modifier.fillMaxWidth()
@@ -158,13 +146,11 @@ fun Login() {
 
 
         }
-        Spacer(
-            modifier = Modifier
-                .height(30.dp)
-        )
-        Button(
-            onClick = { /*TODO*/
 
+        Button(
+            onClick = {
+                val intent = Intent(context, com.example.log_in_reg.IntentActivity::class.java)
+                context.startActivity(intent)
             },
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -173,24 +159,83 @@ fun Login() {
                 fontSize = 22.sp
             )
 
-        }
-//        Spacer(
-//            modifier = Modifier
-//                .height(30.dp)
-//        )
-//        Button(
-//            onClick = {
-//                val intent = Intent(context, IntentActivity::class.java)
-//                context.startActivity(intent)
-//            },
-//            modifier = Modifier.fillMaxWidth()
-//        ) {
-//            Text(
-//                text = "Intents",
-//                fontSize = 4.sp
-//            )
 
         }
+
+
+        Button(
+            onClick = {
+                val intent = Intent(context, com.example.log_in_reg.CalcActivity::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Calc",
+                fontSize = 22.sp
+            )
+
+        }
+
+        Button(
+            onClick = {
+                val intent = Intent(context, com.example.log_in_reg.SimpleListActivity::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Mylist",
+                fontSize = 22.sp
+            )
+        }
+
+
+        Button(
+            onClick = {
+                val intent = Intent(context, com.example.log_in_reg.RecyclerActivity::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Recycler",
+                fontSize = 22.sp
+            )
+
+        }
+        Button(
+            onClick = {
+                val intent = Intent(context, com.example.log_in_reg.CardActivity::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "CardBox",
+                fontSize = 22.sp
+            )
+        }
+        Button(
+            onClick = {
+                val intent = Intent(context, com.example.log_in_reg.CustomListActivity::class.java)
+                context.startActivity(intent)
+
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Custom",
+                fontSize = 22.sp
+            )
+
+        }
+    }
+
+
+
+
+
     }
 
 

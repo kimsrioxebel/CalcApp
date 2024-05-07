@@ -1,6 +1,7 @@
-package com.example.log_in_reg.ui.theme
+package com.example.log_in_reg
 
 import android.content.Intent
+import android.graphics.drawable.Icon
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -38,7 +39,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.log_in_reg.MainActivity
 import com.example.log_in_reg.ui.theme.ui.theme.Log_in_regTheme
 
 class RegisterActivity : ComponentActivity() {
@@ -47,10 +47,7 @@ class RegisterActivity : ComponentActivity() {
         setContent {
             Log_in_regTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
+                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
 //                    Greeting("Android")
                     Register()
                 }
@@ -58,15 +55,15 @@ class RegisterActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 fun Register() {
-    var Name by remember { mutableStateOf("") }
+    var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
-    var Password by remember { mutableStateOf("") }
-    var Confirm by remember { mutableStateOf("") }
-    var context = LocalContext.current
+    var password by remember { mutableStateOf("") }
+    val confirm by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
+    Icon(imageVector = Icons.Default.Person, contentDescription = "Person")
 
 
     Column(
@@ -86,10 +83,9 @@ fun Register() {
 
 
         Icon(imageVector = Icons.Default.Person, contentDescription = "Person")
-
         OutlinedTextField(
-            value = Name,
-            onValueChange = { Name = it },
+            value = name,
+            onValueChange = { name = it },
             leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "Name") },
             label = {
                 Text(
@@ -139,8 +135,8 @@ fun Register() {
 
 
         OutlinedTextField(
-            value = Password,
-            onValueChange = { Password = it },
+            value = password,
+            onValueChange = { password = it },
             trailingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Pass") },
             leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Pass") },
             label = {
@@ -164,8 +160,8 @@ fun Register() {
 
 
         OutlinedTextField(
-            value = Confirm,
-            onValueChange = { Password = it },
+            value = confirm,
+            onValueChange = {password = it },
             leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "lock") },
             label = {
                 Text(
@@ -213,7 +209,6 @@ fun Register() {
             )
 
 
-
         }
         Spacer(
             modifier = Modifier
@@ -222,7 +217,7 @@ fun Register() {
 
         Button(
             onClick = {
-                val intent = Intent(context, MainActivity::class.java)
+                val intent = Intent(context, com.example.log_in_reg.IntentActivity::class.java)
                 context.startActivity(intent)
             },
             modifier = Modifier.fillMaxWidth()
@@ -232,14 +227,44 @@ fun Register() {
                 fontSize = 22.sp
             )
         }
+        Spacer(
+            modifier = Modifier
+                .height(30.dp)
+        )
+        Button(
+            onClick = {
+                val intent = Intent(context, com.example.log_in_reg.CalcActivity::class.java)
+                context.startActivity(intent)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Calc",
+                fontSize = 22.sp
+            )
+
+        }
+
+        }
+
+
+
     }
-}
 
 
 
 
-@Preview
+
+
+//@Preview
+//@Composable
+//private fun Login() {
+//    Register()
+//}
+//
+@Preview(showBackground = true)
 @Composable
-private fun Login() {
+fun Loginprev(){
+
     Register()
 }

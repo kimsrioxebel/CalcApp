@@ -1,4 +1,4 @@
-package com.example.log_in_reg.ui.theme.ui.theme
+package com.example.log_in_reg
 
 import android.app.Activity
 import android.content.Intent
@@ -8,11 +8,13 @@ import android.os.Bundle
 import android.provider.MediaStore
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.ActivityResultLauncher
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,41 +35,31 @@ import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
-import com.example.log_in_reg.ui.theme.Register
-import com.example.log_in_reg.ui.theme.ui.theme.ui.theme.Log_in_regTheme
+import com.example.log_in_reg.ui.theme.Log_in_regTheme
 
 class IntentActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Log_in_regTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-//                    Greeting("Android")
-                    Intentpre()
+            com.example.log_in_reg.Intent()
 
-                }
-            }
         }
     }
 }
 
 @Composable
-fun Intentscreen() {
+fun Intent() {
     val context= LocalContext.current
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.Magenta)
+            .background(Color.Gray)
             .padding(16.dp)
     ) {
         Text(
-            text = "CalcIntent App",
+            text = "e-Mobilis",
             color = Color.Cyan,
             fontFamily = FontFamily.SansSerif,
             fontSize = 35.sp
@@ -77,11 +69,11 @@ fun Intentscreen() {
             onClick = {
                 val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-               startActivityForResult(context as Activity,takePictureIntent,1,null)
+                startActivityForResult(context as Activity,takePictureIntent,1,null)
             },
             colors = ButtonDefaults.buttonColors(Color.Blue),
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
 
         ) {
             Text(text = "Camera",
@@ -93,15 +85,12 @@ fun Intentscreen() {
 
         OutlinedButton(
             onClick = {
-                val intent = android.content.Intent(
-                    android.content.Intent.ACTION_CALL,
-                    Uri.parse("tel:" + "+254759058150")
-                )
+                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+918511812660"))
 
                 if (ContextCompat.checkSelfPermission(
                         context,
                         android.Manifest.permission.CALL_PHONE
-                    ) !=PackageManager.PERMISSION_GRANTED
+                    ) != PackageManager.PERMISSION_GRANTED
                 ) {
                     ActivityCompat.requestPermissions(
                         context as Activity,
@@ -114,7 +103,7 @@ fun Intentscreen() {
             },
             colors = ButtonDefaults.buttonColors(Color.Blue),
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
 
         ) {
             Text(text = "Call",
@@ -127,9 +116,9 @@ fun Intentscreen() {
 
         OutlinedButton(
             onClick = {
-                val uri = Uri.parse("smsto:07456789")
+                val uri = Uri.parse("smsto:0759058150")
 
-                val intent = android.content.Intent(android.content.Intent.ACTION_SENDTO, uri)
+                val intent = Intent(Intent.ACTION_SENDTO, uri)
 
                 intent.putExtra("Hello", "How is todays weather")
 
@@ -137,7 +126,7 @@ fun Intentscreen() {
             },
             colors = ButtonDefaults.buttonColors(Color.Blue),
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
 
         ) {
             Text(text = "Sms",
@@ -156,7 +145,7 @@ fun Intentscreen() {
             },
             colors = ButtonDefaults.buttonColors(Color.Blue),
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
 
         ) {
             Text(text = "Stk",
@@ -168,19 +157,19 @@ fun Intentscreen() {
 
         OutlinedButton(
             onClick = {
-                val shareIntent = Intent(android.content.Intent.ACTION_SEND)
+                val shareIntent = Intent(Intent.ACTION_SEND)
 
-                shareIntent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+                shareIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 
-                shareIntent.type= "text/plain"
+                shareIntent.type = "text/plain"
 
-                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Hey, download this app!")
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, download this app!")
 
                 context.startActivity(shareIntent)
             },
             colors = ButtonDefaults.buttonColors(Color.Blue),
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
 
         ) {
             Text(text = "Share",
@@ -194,7 +183,7 @@ fun Intentscreen() {
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(Color.Blue),
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
 
         ) {
             Text(text = "Email",
@@ -206,18 +195,15 @@ fun Intentscreen() {
 
         OutlinedButton(
             onClick = {
-                val phone = "+34666777888"
+                val phone = "+254759058150"
 
-                val intent = android.content.Intent(
-                    android.content.Intent.ACTION_DIAL,
-                    Uri.fromParts("tel", phone, null)
-                )
+                val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
 
                 context.startActivity(intent)
             },
             colors = ButtonDefaults.buttonColors(Color.Blue),
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
 
         ) {
             Text(text = "Dial",
@@ -233,15 +219,5 @@ fun Intentscreen() {
 @Composable
 fun Intentpre() {
 
-            Intentpre()
-        }
-
-//    com.example.log_in_reg.Intent(
-//    )
-
-
-//@Preview
-//@Composable
-//private fun Intentpre() {
-//    Intentpre()
-//}
+    com.example.log_in_reg.Intent()
+}

@@ -5,7 +5,8 @@
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +19,57 @@
         android:theme="@style/Theme.Log_in_reg"
         tools:targetApi="31">
         <activity
-            android:name=".ui.theme.ui.theme.IntentActivity"
+            android:name=".CardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_card"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".CustomListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_custom_list"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".SimpleListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_simple_list"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".RecyclerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycler"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".RecycleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recycle"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".SimplelistActivity"
+            android:exported="false"
+            android:label="@string/title_activity_simplelist"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".CalcActivity"
+            android:exported="false"
+            android:label="@string/title_activity_calc"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".CalculatorActivity"
+            android:exported="false"
+            android:label="@string/title_activity_calculator"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_register"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".ui.theme.ui.theme.RegisterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_register"
+            android:theme="@style/Theme.Log_in_reg" />
+        <activity
+            android:name=".IntentActivity"
             android:exported="false"
             android:label="@string/title_activity_intent"
             android:theme="@style/Theme.Log_in_reg" />
@@ -31,11 +82,6 @@
             android:name=".ui.theme.ui.theme.ui.theme.IntentActivity"
             android:exported="false"
             android:label="@string/title_activity_intent"
-            android:theme="@style/Theme.Log_in_reg" />
-        <activity
-            android:name=".ui.theme.RegisterActivity"
-            android:exported="false"
-            android:label="@string/title_activity_register"
             android:theme="@style/Theme.Log_in_reg" />
         <activity
             android:name=".MainActivity"
